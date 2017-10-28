@@ -14,6 +14,16 @@ class Temperature
     }
 
     /**
+     * Self-Encapsulation
+     * @param $measure
+     */
+    private function setMeasure($measure)
+    {
+        $this->checkMeasureIsPositive($measure); //GuardClause
+        $this->measure = $measure;
+    }
+
+    /**
      * @param $measure
      * @throws TemperatureNegativeException
      */
@@ -27,16 +37,5 @@ class Temperature
     public function measure()
     {
         return $this->measure;
-    }
-
-    /**
-     * Self-Encapsulation
-     * @param $measure
-     */
-    private function setMeasure($measure)
-    {
-        //GuardClause
-        $this->checkMeasureIsPositive($measure);
-        $this->measure = $measure;
     }
 }
