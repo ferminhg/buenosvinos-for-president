@@ -3,7 +3,7 @@
 <phpunit bootstrap="vendor/autoload.php"
          colors="true"
          verbose="true"
-         stopOnFailure="false">
+         stopOnFailure="true">
     <testsuites>
         <testsuite name="Rigor Talks Test Suite">
             <directory>tests</directory>

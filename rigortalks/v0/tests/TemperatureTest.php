@@ -9,16 +9,26 @@ use RigorTalks\Temperature;
  */
 class TemperatureTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @test
+     */
+    public function tryToCreateAValidTemperatureWithNameContructor()
+    {
+        $measure = 18;
+        $this->assertSame(
+            $measure,
+            Temperature::take($measure)->measure()
+        );
+    }
 
     /**
      * @test
-     * @expectedException RigorTalks\TemperatureNegativeException
+     * @expectedException \RigorTalks\TemperatureNegativeException
      */
     public function tryToCreateANonValidTemperature()
     {
-        new Temperature(-1);
+        Temperature::take(-1);
     }
-
 
     /**
      * @test
@@ -28,8 +38,7 @@ class TemperatureTest extends \PHPUnit_Framework_TestCase
         $measure = 18;
         $this->assertSame(
           $measure,
-            (new Temperature($measure))->measure()
+            Temperature::take($measure)->measure()
         );
     }
-
 }

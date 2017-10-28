@@ -8,7 +8,7 @@ class Temperature
 {
     private $measure;
 
-    public function __construct($measure)
+    private function __construct($measure)
     {
         $this->setMeasure($measure);
     }
@@ -32,6 +32,11 @@ class Temperature
         if ($measure < 0) {
             throw new TemperatureNegativeException("Measure should be positive");
         }
+    }
+
+    public static function take($measure)
+    {
+        return new Temperature($measure);
     }
 
     public function measure()
