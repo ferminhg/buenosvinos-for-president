@@ -3,6 +3,7 @@
 namespace RigorTalks\Tests;
 
 use RigorTalks\Temperature;
+use RigorTalks\TemperatureTestClass;
 
 /**
  * Class TemperatureTest
@@ -37,8 +38,28 @@ class TemperatureTest extends \PHPUnit_Framework_TestCase
     {
         $measure = 18;
         $this->assertSame(
-          $measure,
+            $measure,
             Temperature::take($measure)->measure()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function tryToCheckIfAColdTemperatureIsSuperHot()
+    {
+        $this->assertFalse(
+            TemperatureTestClass::take(10)->isSuperHot()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function tryToCheckIfASuperHotTemperatureIsSuperHot()
+    {
+        $this->assertTrue(
+            TemperatureTestClass::take(100)->isSuperHot()
         );
     }
 }

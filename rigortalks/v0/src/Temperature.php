@@ -16,6 +16,15 @@ class Temperature
 {
     private $measure;
 
+    /**
+     * @param $measure
+     * @return Temperature
+     */
+    public static function take($measure)
+    {
+        return new static($measure);
+    }
+
     private function __construct($measure)
     {
         $this->setMeasure($measure);
@@ -42,17 +51,33 @@ class Temperature
         }
     }
 
-    /**
-     * @param $measure
-     * @return Temperature
-     */
-    public static function take($measure)
-    {
-        return new static($measure);
-    }
-
     public function measure()
     {
         return $this->measure;
+    }
+
+    public function isSuperHot()
+    {
+        $threshold = $this->getThreshold();
+
+        return $this->measure() > $threshold;
+    }
+
+    /**
+     *  Metodo que implementa infraestructura
+     * @return mixed
+     */
+    protected function getThreshold()
+    {
+        $conn = \Doctrine\DBAL\DriverManager::getConnection(array(
+            'dbname' => 'test',
+            'user' => 'root',
+            'password' => '',
+            'host' => 'localhost',
+            'driver' => 'pdo_mysql'
+        ), new \Doctrine\DBAL\Configuration());
+
+        $threshold = $conn->fetchColumn('select hot_threshold From configuration');
+        return $threshold;
     }
 }
