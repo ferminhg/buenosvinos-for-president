@@ -2,15 +2,6 @@
 
 namespace RigorTalks;
 
-class TemperatureNegativeException extends \Exception
-{
-    public static function fromMeasure($measure)
-    {
-        return new static(
-            sprintf("Measure %d should be positive", $measure)
-        );
-    }
-}
 
 class Temperature
 {
@@ -86,5 +77,12 @@ class Temperature
         $threshold = $coldThresholdSource->getThreshold();
 
         return $this->measure() < $threshold;
+    }
+
+    public static function fromStation($station)
+    {
+        return new static(
+            $station->sensor()->temperature()->measure()
+        );
     }
 }

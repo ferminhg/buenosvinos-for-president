@@ -80,4 +80,34 @@ class TemperatureTest extends \PHPUnit_Framework_TestCase implements ColdThresho
     {
         return 50;
     }
+
+    /**
+     * @test
+     */
+    public function tryToCreateATemperatureFromStation()
+    {
+        $this->assertSame(
+            50,
+            Temperature::fromStation(
+                $this
+            )->measure()
+        );
+    }
+
+    public function sensor()
+    {
+        return $this;
+
+    }
+
+    public function temperature()
+    {
+        return $this;
+    }
+
+    public function measure()
+    {
+        return 50;
+
+    }
 }
