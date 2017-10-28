@@ -10,11 +10,7 @@ class Temperature
 
     public function __construct($measure)
     {
-        /*
-         * GuardClauses. No aseguramos que se ejecuta esta guarda antes de hacer nada
-         */
-        $this->checkMeasureIsPositive($measure);
-        $this->measure = $measure;
+        $this->setMeasure($measure);
     }
 
     /**
@@ -31,5 +27,16 @@ class Temperature
     public function measure()
     {
         return $this->measure;
+    }
+
+    /**
+     * Self-Encapsulation
+     * @param $measure
+     */
+    private function setMeasure($measure)
+    {
+        //GuardClause
+        $this->checkMeasureIsPositive($measure);
+        $this->measure = $measure;
     }
 }
