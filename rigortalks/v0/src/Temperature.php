@@ -2,7 +2,15 @@
 
 namespace RigorTalks;
 
-class TemperatureNegativeException extends \Exception {}
+class TemperatureNegativeException extends \Exception
+{
+    public static function fromMeasure($measure)
+    {
+        return new static(
+            sprintf("Measure %d should be positive", $measure)
+        );
+    }
+}
 
 class Temperature
 {
@@ -30,13 +38,17 @@ class Temperature
     public function checkMeasureIsPositive($measure)
     {
         if ($measure < 0) {
-            throw new TemperatureNegativeException("Measure should be positive");
+            throw TemperatureNegativeException::fromMeasure($measure);
         }
     }
 
+    /**
+     * @param $measure
+     * @return Temperature
+     */
     public static function take($measure)
     {
-        return new Temperature($measure);
+        return new static($measure);
     }
 
     public function measure()
