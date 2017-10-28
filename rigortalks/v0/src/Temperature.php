@@ -80,4 +80,11 @@ class Temperature
         $threshold = $conn->fetchColumn('select hot_threshold From configuration');
         return $threshold;
     }
+
+    public function isSuperCold(ColdThresholdSource $coldThresholdSource)
+    {
+        $threshold = $coldThresholdSource->getThreshold();
+
+        return $this->measure() < $threshold;
+    }
 }
