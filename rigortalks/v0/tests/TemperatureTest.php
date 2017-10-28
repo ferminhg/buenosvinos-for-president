@@ -97,7 +97,6 @@ class TemperatureTest extends \PHPUnit_Framework_TestCase implements ColdThresho
     public function sensor()
     {
         return $this;
-
     }
 
     public function temperature()
@@ -108,6 +107,21 @@ class TemperatureTest extends \PHPUnit_Framework_TestCase implements ColdThresho
     public function measure()
     {
         return 50;
+    }
 
+    /**
+     * Test inmutabilidad
+     * @test
+     */
+    public function tryToSumTwoMeasures()
+    {
+        $a = Temperature::take(50);
+        $b = Temperature::take(50);
+
+        $c = $a->add($b);
+
+        $this->assertSame(100,$c->measure());
+        $this->assertNotSame($a, $c);
+        $this->assertNotSame($a, $b);
     }
 }
