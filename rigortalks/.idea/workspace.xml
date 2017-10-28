@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31016f31-d328-4867-9c4d-582b5a66de05" name="Default" comment="Named constructor IV">
+    <list default="true" id="31016f31-d328-4867-9c4d-582b5a66de05" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path=".idea/" />
@@ -225,7 +225,7 @@
       <updated>1509031729346</updated>
       <workItem from="1509031731345" duration="2239000" />
       <workItem from="1509211978325" duration="614000" />
-      <workItem from="1509212618272" duration="880000" />
+      <workItem from="1509212618272" duration="887000" />
     </task>
     <task id="LOCAL-00001" summary="Guard Clause">
       <created>1509033831055</created>
@@ -248,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1509213424739</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Named constructor IV">
+      <created>1509213501122</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1509213501122</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -284,7 +291,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3733000" />
+    <option name="totallyTimeSpent" value="3740000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="960" y="27" width="953" height="1053" extended-state="4" />
