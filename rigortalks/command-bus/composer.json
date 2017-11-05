@@ -1,0 +1,17 @@
+{
+    "name": "fermin/domain-events",
+    "authors": [
+        {
+            "name": "Fermin",
+            "email": "fermin.hdez@gmail.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "Acme\\": "src"
+      }
+    },
+    "require": {
+        "phpunit/phpunit": "^5.7"
+    }
+}
