@@ -1,38 +1,38 @@
 <?php
 
-namespace Acme\Blog\Application\Post;
+namespace Acme\Blog\Domain\Model\Post;
 
-/** Clase DTO  */
-class PublishCommand
+
+/**
+ * Class PostWasPublished
+ * @package Acme\Blog\Domain\Model\Post
+ */
+class PostWasPublished
 {
     private $userId;
     private $postId;
+    private $ocurredOn;
 
-    /**
-     * PublishCommand constructor.
-     *
-     * @param $userId
-     * @param $postId
-     */
     public function __construct($userId, $postId)
     {
         $this->userId = $userId;
         $this->postId = $postId;
+        $this->occcurredOn = (new \DateTimeImmutable())->getTimestamp();
     }
 
-    /**
-     * @return integer
-     */
+    public function ocurredOn()
+    {
+        return $this->ocurredOn;
+    }
+
     public function userId()
     {
         return $this->userId;
     }
 
-    /**
-     * @return mixed
-     */
     public function postId()
     {
         return $this->postId;
     }
+
 }

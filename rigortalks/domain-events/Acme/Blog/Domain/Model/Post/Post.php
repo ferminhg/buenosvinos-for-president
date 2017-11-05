@@ -2,7 +2,7 @@
 
 namespace Acme\Blog\Domain\Model\Post;
 
-use Acme\Blog\Application\Post\PostWasPublished;
+use Acme\Blog\Domain\Model\TriggerEventsTrait;
 use Acme\Blog\Domain\Model\User\User;
 
 /**
@@ -12,8 +12,11 @@ use Acme\Blog\Domain\Model\User\User;
  */
 class Post
 {
-    const POST_STATUS_PUBLISHED = 1;
-    const POST_STATUS_DRAFT = 0;
+    use TriggerEventsTrait;
+
+    const POST_STATUS_PUBLISHED = 10;
+    const POST_STATUS_DRAFT = 20;
+
     private $id;
     private $title;
     private $content;
@@ -42,7 +45,10 @@ class Post
         $this->assertUserIsAuthorOfThisPost($user);
         $this->status = self::POST_STATUS_PUBLISHED;
 
-        //new PostWasPublished($this->id(), $user->id())
+        //forma estatica para
+        $this->trigger(
+             new PostWasPublished($this->id(), $user->id())
+        );
 
         return $this;
     }
@@ -61,6 +67,11 @@ class Post
     private function authorId()
     {
         return $this->authorId;
+    }
+
+    public function status()
+    {
+        return $this->status;
     }
 
 

@@ -35,41 +35,10 @@ class Publish
 
         $post->publish($user);
 
-        //Disparar el evento
-        // $this->eventDispatcher->notify(new PostWasPublished($post->id(), $user->id()));
-        //si notificamos aqui puede ser que alguien publique y no se notifique
-
+        //notificar eventos
+        $events = $post->getEvents();
+        $this->eventDispatcher->notify($events);
 
         return $post;
     }
-}
-
-class PostWasPublished
-{
-    private $userId;
-    private $postId;
-    private $occurredOn;
-
-    public function __construct($userId, $postId)
-    {
-        $this->userId = $userId;
-        $this->postId = $postId;
-        $this->occcurredOn = (new \DateTimeImmutable())->getTimestamp();
-    }
-
-    public function occurredOn()
-    {
-        return $this->occurredOn;
-    }
-
-    public function userId()
-    {
-        return $this->userId;
-    }
-
-    public function postId()
-    {
-        return $this->postId;
-    }
-
 }
