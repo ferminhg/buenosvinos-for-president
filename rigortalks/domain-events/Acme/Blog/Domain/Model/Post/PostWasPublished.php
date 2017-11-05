@@ -2,27 +2,29 @@
 
 namespace Acme\Blog\Domain\Model\Post;
 
+use Ddd\Domain\DomainEvent;
+
 
 /**
  * Class PostWasPublished
  * @package Acme\Blog\Domain\Model\Post
  */
-class PostWasPublished
+class PostWasPublished implements DomainEvent
 {
     private $userId;
     private $postId;
-    private $ocurredOn;
+    private $occurredOn;
 
     public function __construct($userId, $postId)
     {
         $this->userId = $userId;
         $this->postId = $postId;
-        $this->occcurredOn = (new \DateTimeImmutable())->getTimestamp();
+        $this->occurredOn = (new \DateTimeImmutable())->getTimestamp();
     }
 
-    public function ocurredOn()
+    public function occurredOn()
     {
-        return $this->ocurredOn;
+        return $this->occurredOn;
     }
 
     public function userId()

@@ -4,6 +4,7 @@ namespace Acme\Blog\Domain\Model\Post;
 
 use Acme\Blog\Domain\Model\TriggerEventsTrait;
 use Acme\Blog\Domain\Model\User\User;
+use Ddd\Domain\DomainEventPublisher;
 
 /**
  * Class Post
@@ -45,7 +46,11 @@ class Post
         $this->assertUserIsAuthorOfThisPost($user);
         $this->status = self::POST_STATUS_PUBLISHED;
 
-        //forma estatica para
+        DomainEventPublisher::instance()->publish(
+            new PostWasPublished($this->id(), $user->id())
+        );
+
+        //forma estatica con un trait acumular eventos de dominio en la propia entidad
         $this->trigger(
              new PostWasPublished($this->id(), $user->id())
         );
@@ -74,5 +79,8 @@ class Post
         return $this->status;
     }
 
-
+    private function id()
+    {
+        return $this->id;
+    }
 }

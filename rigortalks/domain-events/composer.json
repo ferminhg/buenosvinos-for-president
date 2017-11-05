@@ -6,10 +6,27 @@
             "email": "fermin.hdez@gmail.com"
         }
     ],
-    "autoload": {
-      "Acme\\": "Acme"
-    },
     "require": {
-        "phpunit/phpunit": "^5.7"
+      "carlosbuenosvinos/ddd": "^1.0",
+      "jms/serializer": "~1.1",
+      "react/event-loop": "^0.4.1",
+      "phpunit/phpunit": "^5.7"
+    },
+  "autoload": {
+    "psr-4": {
+      "Acme\\": "Acme/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Acme\\": "Acme/"
+    }
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "prefer-stable": true,
+  "scripts": {
+    "test": "bin/phpunit"
+  }
 }
