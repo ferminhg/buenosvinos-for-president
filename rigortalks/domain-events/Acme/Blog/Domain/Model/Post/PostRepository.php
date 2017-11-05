@@ -8,6 +8,10 @@ namespace Acme\Blog\Domain\Model\Post;
 class PostRepository
 {
 
+    /**
+     * @param $postId
+     * @return Post
+     */
     public function ofIdOrFail($postId)
     {
     }

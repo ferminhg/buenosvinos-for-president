@@ -9,6 +9,10 @@ namespace Acme\Blog\Domain\Model\User;
 class UserRepository
 {
 
+    /**
+     * @param $userId
+     * @return User
+     */
     public function ofIdOrFail($userId)
     {
     }
